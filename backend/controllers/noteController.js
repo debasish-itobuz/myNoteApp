@@ -73,50 +73,49 @@ export const getById = async (req, res) => {
 
 //put(update)
 export const updateNote = async (req, res) => {
-    try{
-        const {id} = req.params;
-        const {title, content} = req.body;
-        const note = await noteSchema.findById(id);
-        if(note){
-            note.title = title;
-            note.content = content;
-            await note.save();
-            res.json({
-                status: 200,
-                success: true,
-                message : "Note Updated Successfully",
-                note,
-            })
-        }
+  try {
+    const { id } = req.params;
+    const { title, content } = req.body;
+    const note = await noteSchema.findById(id);
+    if (note) {
+      note.title = title;
+      note.content = content;
+      await note.save();
+      res.json({
+        status: 200,
+        success: true,
+        message: "Note Updated Successfully",
+        note,
+      });
     }
-    catch(err){
-        console.log(err)
-        res.json({
-            status: 404,
-            success: false,
-            message: "Failed to Update Note"
-        })
-    }
+  } catch (err) {
+    console.log(err);
+    res.json({
+      status: 404,
+      success: false,
+      message: "Failed to Update Note",
+    });
+  }
 };
 
 //delete(delete)
-export const deleteNote = async(req, res) =>{
-    try{
-        const note =  await noteSchema.findByIdAndDelete(req.params.id);
-        if(note){
-            res.json({
-                status:200,
-                success: true,
-                message:"Note Deleted Successfully",
-                note,
-            })
-        }
-    }catch(err){
-        console.log(err);
-        res.json({
-            status: 404,
-            success: false,
-            message:"Failed to Delete Note"
-        })
+export const deleteNote = async (req, res) => {
+  try {
+    const note = await noteSchema.findByIdAndDelete(req.params.id);
+    if (note) {
+      res.json({
+        status: 200,
+        success: true,
+        message: "Note Deleted Successfully",
+        note,
+      });
     }
-}
+  } catch (err) {
+    console.log(err);
+    res.json({
+      status: 404,
+      success: false,
+      message: "Failed to Delete Note",
+    });
+  }
+};

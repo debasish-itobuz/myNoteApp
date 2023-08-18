@@ -5,11 +5,11 @@
   gap: 20px;
 }
 
-.card{
-    background-color:rgb(70, 182, 182);
-    width: 20vw;
-    height: 20vh;
-    padding: 20px;
-    margin-top: 5px;
-    color: black;
+.card {
+  background-color: rgb(70, 182, 182);
+  width: 20vw;
+  height: 20vh;
+  padding: 20px;
+  margin-top: 5px;
+  color: black;
 }
